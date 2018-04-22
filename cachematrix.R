@@ -17,14 +17,14 @@ makeCacheMatrix <- function(x = matrix()) {
  ## This is a function that calls the cache if it exists, else it calculates the inverse
  
 cacheSolve <- function(x, ...) {
-    i <- x[getsolve()]
+    i <- x$getsolve()
     if(!is.null(i)){
       message("getting cached data")
       return(i)
     }
-    data <- x[get()]
+    data <- x$get()
     i <- solve(data, ...)
-    x[setsolve(i)]
+    x$setsolve(i)
     i
-     ## Return a matrix that is the inverse of 'x'
+     ## Return a matrix that is the inverse of 'x'. Will calculate it if necessary, but will look for cache first. 
  }
